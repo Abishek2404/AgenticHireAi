@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm --workspace client run build",
+  "outputDirectory": "client/.next",
+  "installCommand": "npm install --workspaces --include-workspace-root",
+  "framework": "nextjs",
+  "functions": {
+    "api/[...path].js": {
+      "maxDuration": 60
+    }
+  }
+}
