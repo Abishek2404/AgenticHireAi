@@ -1,10 +1,5 @@
-import dotenv from "dotenv";
 import { createApp } from "../server/src/app.js";
 import { connectDatabase } from "../server/src/config/database.js";
-
-if (process.env.NODE_ENV !== "production") {
-  dotenv.config({ path: "server/.env" });
-}
 
 const app = createApp();
 let databasePromise;

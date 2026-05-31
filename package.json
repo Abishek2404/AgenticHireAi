@@ -8,9 +8,9 @@
     "server"
   ],
   "scripts": {
-    "build": "npm --workspace client run build",
-    "dev:client": "npm --workspace client run dev",
-    "dev:server": "npm --workspace server run dev",
-    "test": "npm --workspace server test"
+    "build": "npm run build --prefix client",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "test": "npm test --prefix server"
   }
 }
