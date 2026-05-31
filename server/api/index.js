@@ -9,6 +9,11 @@ if (process.env.NODE_ENV !== "production") {
 const app = createApp();
 let databasePromise;
 
+function isHealthCheck(req) {
+  const pathname = req.url?.split("?")[0];
+  return pathname === "/" || pathname === "/health" || pathname === "/api" || pathname === "/api/health";
+}
+
 function ensureDatabase() {
   if (!databasePromise) {
     databasePromise = connectDatabase().catch((error) => {
@@ -20,6 +25,10 @@ function ensureDatabase() {
 }
 
 export default async function handler(req, res) {
+  if (isHealthCheck(req)) {
+    return app(req, res);
+  }
+
   try {
     await ensureDatabase();
   } catch (error) {

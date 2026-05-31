@@ -23,6 +23,10 @@ export function createApp() {
     res.json({ success: true, data: { status: "ok" } });
   });
 
+  app.get("/", (req, res) => {
+    res.json({ success: true, data: { name: "AgenticHireAI API", status: "ok" } });
+  });
+
   app.use("/auth", authRoutes);
   app.use("/jobs", jobRoutes);
   app.use("/candidates", candidateRoutes);
