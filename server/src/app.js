@@ -12,6 +12,8 @@ import workflowRoutes from "./routes/workflow.routes.js";
 export function createApp() {
   const app = express();
 
+  app.set("trust proxy", 1);
+
   app.use(helmet());
   app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:3000", credentials: true }));
   app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 300 }));
